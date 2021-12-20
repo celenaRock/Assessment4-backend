@@ -2,10 +2,54 @@
 <html>
   <head>
     <title>Back End Assessment</title>
+    <link rel="stylesheet" href="style.css"
   </head>
   <body class="container">
-    <button id="complimentButton">Get a compliment</button>
+    <nav> <p>View my heroku deployment here</p>
+      <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div>
+      <ul class ="nav-links">
+          <li><a href="https://unicornsbyjacqueline.herokuapp.com">About</a></li>
+          <li><a href="https://unicornsbyjacqueline.herokuapp.com/artist
+              ">Artist</a></li>
+          <li><a href="https://unicornsbyjacqueline.herokuapp.com/project">Project</a></li>
+      </ul>
+  </nav>
 
+
+ 
+</div>
+<form id="santa">
+<label>
+   Your Name:
+</label>
+                
+<input type="text" id="santa-name">
+<label>
+   Comment:
+</label>
+  <input type="text" id="santa-comment">
+  <button type="submit">Submit</button>
+</form>
+</div>
+
+    <button id="complimentButton">Get a compliment</button>
+    <button>This does nothing
+      
+    </button>
+    <button id="fortuneButton">This does something
+      
+    </button>
+    <button id="demo">
+      Locate
+    </button>
+    <input type="datetime-local">
+    <input type="submit">
+    
+     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       document.getElementById("complimentButton").onclick = function () {
@@ -16,5 +60,25 @@
             });
       };
     </script>
+        <script>
+          document.getElementById("fortuneButton").onclick = function () {
+            axios.get("http://localhost:4000/api/fortune/")
+                .then(function (response) {
+                  const data = response.data;
+                  alert(data);
+                });
+          };
+        </script>
+        <script>
+           document.getElementById("demo").onclick = function () {
+            axios.get("http://localhost:4000/api/geolocation/")
+                .then(function (response) {
+                  const data = response.data;
+                  alert(data);
+                });
+          };
+          </script>
+        <script src="server/index.js" async defer></script> 
+        <script src="form.js" async defer></script> 
   </body>
 </html>

@@ -1,29 +1,35 @@
-const profiles = require('./db.json');
-let globalId = 4
 
 
-// navigator.geolocation.getCurrentPosition(position => {
-//     const { latitude, longitude } = position.coords;
-//     // Show a map centered at latitude / longitude.
-//   });
-
-let users = [user1, user2, user3]
+require("dotenv").config();
+const path = require("path");
+const comments = require('./db.json');
 
 module.exports = {
-  createUser: (req, res) => {
-    userDatabase.push(req.body)
-    res.status(200).send('User successfully added.')
-  },
-  updateUser: (req, res) => {
-    let existingUsername  = req.params.username
-    let newUsername = req.body.username
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].username === existingUsername) {
-        user[i].username = newUsername
-        res.status(200).send("User updated.")
-        return
-      }
+    home: (req, res) => {
+        res.status(200).sendFile(path.join(__dirname, "../public/index.html"));
+    },
+
+    artist: (req, res) => {
+        res.status(200).sendFile(path.join(__dirname, "../public/artist.html"));
+    },
+    project: (req, res) => {
+        res.status(200).sendFile(path.join(__dirname, "../public/project.html"));
+    },
+
+
+    getComments: (req, res) => {
+        res.status(200).send(comments)
+    },
+
+    createComment: (req, res) => {
+        let { name, text, pony} = req.body;
+        let newComment = {
+            name: name,
+            text: text,
+            pony: pony
+        }
+        comments.push(newComment)
+        res.status(200).send(newComment)
     }
-    res.status(400).send("User not found.")
-  }
+    
 }
