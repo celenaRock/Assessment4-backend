@@ -37,7 +37,7 @@ app.get("/js", (req, res) => {
 
 app.get("/api/comments/", (req, res) => {
   const comments = ""
-}
+},
 
 
 app.get("/api/compliment", (req, res) => {
@@ -57,7 +57,7 @@ app.get("/api/compliment", (req, res) => {
 
   res.status(200).send(randomCompliment);
   
-});
+}));
 
 
 app.get("/api/fortune", (req, res) => {
