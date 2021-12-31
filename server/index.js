@@ -12,7 +12,7 @@ app.use(express.json()); // When we want to be able to accept JSON.
 
 
 
-app.use(express.static("public"));
+app.use(express.static("client"));
 
 const PORT = process.env.PORT || 4000
 const { home, artist, project, getComments, createComment } = require('./controller.js')
@@ -28,11 +28,11 @@ app.post("/comments", createComment);
 
 
 app.get("/styles", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/stylesheets"));
+    res.sendFile(path.join(__dirname, "client/stylesheets"));
 });
 
 app.get("/js", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/js"));
+    res.sendFile(path.join(__dirname, "client/js"));
 });
 
 app.get("/api/comments/", (req, res) => {

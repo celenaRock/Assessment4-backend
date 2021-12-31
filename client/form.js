@@ -1,6 +1,9 @@
+
+
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 const links = document.querySelectorAll(".nav-links li");
+const baseURL = `http://localhost:4000`
 
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("open");
@@ -24,7 +27,7 @@ submitHandler = (event) => {
     text: text,
     pony: pony
   }
-  axios.post('https://unicornsbyjacqueline.herokuapp.com/comments', object)
+  axios.post(`${baseURL}`, object)
   .then(res => renderComment(res.data))
 
   event.target.reset()
@@ -35,7 +38,7 @@ rainbowForm.addEventListener("submit", submitHandler);
 santaForm.addEventListener("submit", submitHandler); 
 
 getComments = () => {
-  axios.get("https://unicornsbyjacqueline.herokuapp.com/comments")
+  axios.get("client/form.js")
   .then(res => {
     res.data.forEach(comment => renderComment(comment))
   })
